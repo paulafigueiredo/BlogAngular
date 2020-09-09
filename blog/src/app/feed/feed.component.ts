@@ -50,7 +50,7 @@ export class FeedComponent implements OnInit {
       this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
         this.postagem = resp
         this.postagem = new Postagem()
-        alert('Postagem realizada com sucesso')
+        alert ('Postagem realizada com sucesso!')
         this.findAllPostagens()
       })
     }
