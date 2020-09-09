@@ -16,17 +16,15 @@ export class FeedComponent implements OnInit {
 
   postagem: Postagem = new Postagem()
   listaPostagens: Postagem[]
-
+  titulo: string
 
   tema: Tema = new Tema()
   listaTemas: Tema[]
   idTema: number
 
-
   constructor(
     private postagemService: PostagemService,
     private temaService: TemaService
-
   ) { }
 
   ngOnInit(){
@@ -42,6 +40,22 @@ export class FeedComponent implements OnInit {
     })
   }
 
+  publicar() {
+    this.tema.id = this.idTema
+    this.postagem.tema = this.tema
+
+    if (this.postagem.titulo == null || this.postagem.texto == null || this.postagem.tema == null) {
+        alert ('Preencha todos os campos antes de publicar!')
+    } else {
+      this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
+        this.postagem = resp
+        this.postagem = new Postagem()
+        alert('Postagem realizada com sucesso')
+        this.findAllPostagens()
+      })
+    }
+  }
+
   findAllTemas() {
     this.temaService.getAllTemas().subscribe((resp: Tema[]) => {
       this.listaTemas = resp
@@ -50,9 +64,8 @@ export class FeedComponent implements OnInit {
 
   findByIdTema() {
     this.temaService.getByIdTema(this.idTema).subscribe((resp: Tema) => {
-      this.tema = resp;
+      this.tema = resp
     })
   }
-
 
 }
