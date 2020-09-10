@@ -1,4 +1,4 @@
 # BlogPessoal
 
 
-[Documentaçao do BlogPessoal](https://paulafigueiredo.github.io/Documentacao-Blog/)
+[Click aqui para ter acesso a documentaçao](https://paulafigueiredo.github.io/Documentacao-Blog/)
